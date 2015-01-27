@@ -46,6 +46,9 @@ cat data-hold/congress-twitter-profiles.json | jq '.[] .verified' | grep 'true' 
 echo '17.'
 cat data-hold/congress-twitter-profiles.json | jq '.[] .followers_count' | sort -nr | head -n 1
 echo '18.'
-cat data-hold/congress-twitter-profiles.json | jq --raw-output '.[] | [.name, .screen_name, .followers_count, .verified, .created_at] | @csv' | head -n 10
+cat data-hold/congress-twitter-profiles.json | \
+  jq --raw-output '.[] | [.name, .screen_name, .followers_count, .verified, .created_at] | @csv' |\
+  head -n 10
 echo '19.'
-cat data-hold/congress-twitter-profiles.json | jq --raw-output '.[] | [.screen_name, .statuses_count, .followers_count, .status .created_at] | @csv' | head -n 10
+cat data-hold/congress-twitter-profiles.json | \
+  jq --raw-output '.[] | [.screen_name, .statuses_count, .followers_count, .status .created_at] | @csv' | head -n 10
