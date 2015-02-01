@@ -1,9 +1,8 @@
-for name in "$@"; do
-  echo "What's in a $name?"
-
-if [[ "$#" -lt 0 ]]; then
+if [[ "$#" -lt 1 ]]; then
 	echo "Please pass in at least one name"
 else
+for name in "$@"; do
+  echo "What's in a $name?"
 datafile='data-hold/namesample.txt'
 name_matches=$(cat $datafile | grep "$name,")
 m_count=0
@@ -15,7 +14,6 @@ for row in $name_matches; do
       m_count=$((m_count + babies))
     else
       f_count=$((f_count + babies))
-      echo 'You should do something here for girl babies'
   fi
 done
 
@@ -31,10 +29,9 @@ else
   else
   	pct_male=$((100 - $pct_female))
     g_and_pct="M,$pct_male"
-    echo 'You should do something here when boys make up the majority'
   fi
 fi
 
 echo "$name,$g_and_pct,$total_babies"
-fi
 done
+fi
